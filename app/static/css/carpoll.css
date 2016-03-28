@@ -1,0 +1,28 @@
+.main-logo {
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+.btn-xlg {
+	height: 300px;
+    width: 49%;                     
+  	width: calc(50% - 8px);         
+  	width: -moz-calc(50% - 8px);    
+  	width: -webkit-calc(50% - 8px); 
+}
+
+.btn-xlg h2 {
+	padding-top: 100px;        
+}
+
+.jumbotron {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+
+#button-row {
+	margin-bottom: 4px;
+}
+

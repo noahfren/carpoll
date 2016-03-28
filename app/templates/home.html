@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10 text-center" id="ride-signup-button">
+			<a href="../signup/rider" type="button" class="btn btn-primary btn-xlg" role="button">
+				<h2>Get a ride!</h2>
+				<p>Signup and get a ride to a nearby polling place.</p>
+			</a>
+			<a href="../signup/driver" type="button" class="btn btn-danger btn-xlg" role="button">
+				<h2>Be a driver!</h2>
+				<p>Drivers like you make carpoll happen.</p>
+			</a>
+		</div>
+		<div class="col-md-1"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-1"></div>
+		<div class="col-md-10">
+			<div class="jumbotron">
+				<h3>What is carpoll?</h3>
+				<p>carpoll helps everybody get involved in government. Our goal is to eliminate the excuses for not voting and make democracy accesible to all, regarldess of access to transportation.</p>
+				<h3>How does it work?</h3>
+				<p>It's simple! Just signup to get a ride, enter your name, email address, zipcode and choose a time you would like to vote. We'll put you in contact you with one of our volunteer drivers and you can arrange a pickup location. After you vote, you can arrange to have the driver take you back to the pickup location.</p>
+				<h3>Cool! How can I help?</h3>
+				<p>Glad you asked! carpoll relies on volunteer drivers who sign up to give someone a ride to and from a polling place. Simply signup to drive at the top of the page and well put you in contact with someone who needs a ride. We'll make sure they are at least within your zipcode's distance. You will be expected to drive your passanger back to the pickup location after you vote.</p>
+			</div>
+		</div>	
+		<div class="col-md-1"></div>
+	</div>
+
+	{% endblock %}

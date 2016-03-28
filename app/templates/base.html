@@ -1,0 +1,54 @@
+{% extends "bootstrap/base.html" %}
+
+
+{% block title %}carpoll{% endblock %}
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}"
+type="image/x-icon"> 
+{% endblock %}
+
+{% block styles %}
+{{ super() }} 
+{{ moment.include_moment() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/carpoll.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div class = "main-logo">
+        <span><img src="{{ url_for('static', filename='carpollLogo.png')}}" alt="carpoll logo" id="logo"></span>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  {% block content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block doc %}
+{{ super() }}
+<footer>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4">
+        <div class="text-center">
+          <ul class="list-inline">
+            <li><a href="https://www.linkedin.com/in/noahfrenkel" target="_blank"><h5 class="text-muted">linkedin</h5></a></li>
+            <li><a href="https://github.com/noahfren" target="_blank"><h5 class="text-muted">github</h5></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+    <div class ="text-center"><p class="text-muted"><small>&copy; 2015 Noah Frenkel</small></p></div>
+  </div>
+</footer>
+{% endblock %}
