@@ -11,7 +11,7 @@ class Config:
 
 class Development(Config):
 	DEBUG = True
-	SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/noahfrenkel/Desktop/carpoll_flask/db.sqlite'
+	SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/noahfrenkel/dev/websites/carpoll/db.sqlite'
 
 class Production(Config):
 	pass

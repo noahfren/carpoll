@@ -4,11 +4,11 @@
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-10 text-center" id="ride-signup-button">
-			<a href="../signup/rider" type="button" class="btn btn-primary btn-xlg" role="button">
+			<a href="{{ url_for('signup.rider_signup') }}" type="button" class="btn btn-primary btn-xlg" role="button">
 				<h2>Get a ride!</h2>
 				<p>Signup and get a ride to a nearby polling place.</p>
 			</a>
-			<a href="../signup/driver" type="button" class="btn btn-danger btn-xlg" role="button">
+			<a href="{{ url_for('signup.driver_signup') }}" type="button" class="btn btn-danger btn-xlg" role="button">
 				<h2>Be a driver!</h2>
 				<p>Drivers like you make carpoll happen.</p>
 			</a>

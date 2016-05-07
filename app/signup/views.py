@@ -1,27 +1,28 @@
-from flask import render_template
-from flask.ext.wtf import Form
-from wtforms import StringField, DateTimeField, IntegerField, SubmitField
-from wtforms.validators import Required, Email, Length
+from flask import render_template, redirect, url_for
 from . import signup
 from .. import db
+from ..models import User, Driver, Rider
+from .forms import DriverForm, RiderForm
 
-class SignupForm(Form):
-	name = StringField('Name', validators=[Required()])
-	email = StringField('Email', validators=[Required(), Email()])
-	zipcode = IntegerField('Zip/Postal Code', validators=[Required(), Length(min=0, max=0)])
-	submit = SubmitField('Signup')
-
-@signup.route('/signup/<role>')
-def signup(role):
-	form = SignupForm()
-	name = None
-	email = None
-	zipcode = None
+@signup.route('/driver', methods=['GET', 'POST'])
+def driver_signup():
+	form = DriverForm()
 	if form.validate_on_submit():
-		name = form.name.data
-		email = form.email.data
-		zipcode = form.zipcode.data
-		form.name.data = ''
-		form.email.data = ''
-		form.zipcode.data = ''
-	return render_template('signup.html', form=form, name=name, email=email, zipcode=zipcode)
+		driver = Driver(name=form.name.data,
+			email=form.email.data,
+			zipcode=form.zipcode.data,
+			num_passengers=form.num_passengers.data)
+		db.session.add(driver)
+		return redirect(url_for('index'))
+	return render_template('signup.html', form=form)
+
+@signup.route('/rider', methods=['GET', 'POST'])
+def rider_signup():
+	form = RiderForm()
+	if form.validate_on_submit():
+		rider = Rider(name=form.name.data,
+			email=form.email.data,
+			zipcode=form.zipcode.data)
+		db.session.add(rider)
+		return redirect(url_for('index'))
+	return render_template('signup.html', form=form)

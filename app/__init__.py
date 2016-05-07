@@ -5,6 +5,8 @@ from flask.ext.moment import Moment
 from config import config
 
 db = SQLAlchemy()
+bootstrap = Bootstrap()
+moment = Moment()
 
 def create_app(config_name):
     app = Flask(__name__)
@@ -12,14 +14,14 @@ def create_app(config_name):
     config[config_name].init_app(app)
 
     db.init_app(app)
-    Bootstrap(app)
-    Moment(app)
+    bootstrap.init_app(app)
+    moment.init_app(app)
 
 
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
 
     from .signup import signup as signup_blueprint
-    app.register_blueprint(signup_blueprint)
+    app.register_blueprint(signup_blueprint, url_prefix='/signup')
 
     return app

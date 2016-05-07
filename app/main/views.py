@@ -1,6 +1,6 @@
-from flask import render_template
+from flask import render_template, request
 from . import main
-from .. import db
+from .. import db, signup
 
 @main.route('/')
 def index():
