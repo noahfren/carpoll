@@ -13,11 +13,17 @@ class Development(Config):
 	DEBUG = True
 	SQLALCHEMY_DATABASE_URI = 'sqlite:////Users/noahfrenkel/dev/websites/carpoll/db.sqlite'
 
+class Testing(Config):
+    TESTING = True
+    SQLALCHEMY_DATABASE_URI = 'sqlite////Users/noahfrenkel/dev/websites/carpoll/db.sqlite'
+
+
 class Production(Config):
 	pass
 
 config = {
 	'development' : Development,
+	'testing' : Testing,
 	'production' : Production,
 	'default' : Development 
 }

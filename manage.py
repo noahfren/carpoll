@@ -1,12 +1,26 @@
 import os
-from app import create_app
-from flask.ext.script import Manager, Server
+from app import create_app, db
+from app.models import Driver, Rider
+from flask.ext.script import Manager, Shell, Server
+from flask.ext.migrate import Migrate, MigrateCommand
 
 app = create_app('default')
 manager = Manager(app)
+migrate = Migrate(app, db)
 
 server = Server(host = '0.0.0.0', port=5000)
 manager.add_command('runserver', server)
+
+def make_shell_context():
+    return dict(app=app, db=db, Driver=Driver, Rider=Rider)
+manager.add_command("shell", Shell(make_context=make_shell_context))
+manager.add_command('db', MigrateCommand)
+
+@manager.command
+def test():
+	import unittest
+	tests = unittest.TestLoader().discover('tests')
+	unittest.TextTestRunner(verbosity=2).run(tests)
 
 if __name__ == '__main__':
 	manager.run()
